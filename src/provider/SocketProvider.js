@@ -37,7 +37,9 @@ class SocketProvider {
 
     if (socketAlreadyExists) {
       try {
-        socketAlreadyExists.socket.emit(props.event, props.data);
+        socketAlreadyExists.socket.send(
+          JSON.stringify({ method: props.event, payload: props.data })
+        );
       } catch (_) {
         return false;
       }
