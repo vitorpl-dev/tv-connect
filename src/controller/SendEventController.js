@@ -8,7 +8,7 @@ class SendEventController {
 
     const status = await this.sendEventUseCase.execute({
       code,
-      link,
+      data: link,
     });
 
     res.status(status ? 200 : 404).json({

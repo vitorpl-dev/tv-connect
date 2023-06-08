@@ -8,7 +8,11 @@ const { routes } = require('./src/routes');
 
 const app = express();
 const server = http.createServer(app);
-const io = new socket.Server(server);
+const io = new socket.Server(server, {
+  cors: {
+    origin: '*',
+  },
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
