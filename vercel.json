@@ -8,8 +8,13 @@
   ],
   "routes": [
     {
+      "src": "/socket/(.*)",
+      "dest": "http://localhost:8080/socket/$1",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
+    },
+    {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "./index.js"
     }
   ]
 }
