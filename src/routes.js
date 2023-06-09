@@ -1,11 +1,11 @@
-const { Router } = require('express');
 require('express-async-errors');
+const { Router } = require('express');
 const { sendEventController } = require('./controller');
 
 const routes = Router();
 
 routes.get('/', (req, res) => {
-  res.send('<h1>Hello World</h1>');
+  res.send('<h1>Hello My World</h1>');
 });
 
 routes.post('/send', (req, res) => {

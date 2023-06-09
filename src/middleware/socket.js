@@ -8,12 +8,12 @@ async function onSocket(client, req) {
 
   client.send(JSON.stringify({ method: 'code', payload: code }));
 
-  client.on('close', async () => {
-    console.log(`Client desconnected [${req.headers['sec-websocket-key']}}]`);
+  client.onclose = async () => {
+    console.log(`Client Desconnected: [${req.headers['sec-websocket-key']}]`);
     await socketProvider.removeSocket({
       socket: client,
     });
-  });
+  };
 }
 
 module.exports = { onSocket };
