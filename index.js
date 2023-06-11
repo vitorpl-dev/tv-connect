@@ -21,6 +21,8 @@ io.on('connection', onSocket);
 
 app.use(onError);
 
-server.listen(8080, () => {
-  console.log('Server running in port 3333!');
+const PORT = process.env.PORT || 8080;
+
+server.listen(PORT, () => {
+  console.log(`Server running in port ${PORT}`);
 });
