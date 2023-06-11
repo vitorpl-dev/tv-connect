@@ -1,14 +1,19 @@
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
-const ws = require('ws');
+const socket = require('socket.io');
 const { onError } = require('./src/middleware/error');
 const { onSocket } = require('./src/middleware/socket');
 const { routes } = require('./src/routes');
 
 const app = express();
 const server = http.createServer(app);
-const io = new ws.Server({ server, path: '/socket' });
+const io = new socket.Server(server, {
+  path: '/socket',
+  cors: {
+    origin: '*',
+  },
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
